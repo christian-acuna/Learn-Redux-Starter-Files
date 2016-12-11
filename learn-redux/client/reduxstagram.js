@@ -6,6 +6,20 @@ import { render } from 'react-dom';
 // Import css
 import css from './styles/style.styl';
 
+import Raven from 'raven-js';
+import { sentry_url, logException } from './data/config';
+
+Raven.config(sentry_url, {
+  tags: {
+    git_commit: 'atoheutnoeu',
+    userLevel: 'editor'
+  }
+}).install();
+
+// Raven.captureException('Something bad happened!');
+// Raven.showReportDialog();
+
+
 // Import components
 import App from './components/App';
 import Single from './components/Single';
